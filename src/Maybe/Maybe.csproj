@@ -8,8 +8,8 @@
     <ProjectGuid>{2C5FE237-CD75-4A6C-AF6D-572AB153F65B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maybe</RootNamespace>
-    <AssemblyName>Maybe</AssemblyName>
+    <RootNamespace>Hazzik.Maybe</RootNamespace>
+    <AssemblyName>Hazzik.Maybe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,8 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Maybe.Nullable.cs" />
+    <Compile Include="Maybe.Objects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,17 +15,13 @@
 		<artifactPath>$(MSBuildProjectDirectory)\release</artifactPath>
 
 		<corePath>$(MSBuildProjectDirectory)\src\Maybe</corePath>
-		<coreFile>Maybe</coreFile>
-		<core>$(corePath)\$(coreFile).csproj</core>
-		<coreSilverlight>$(corePath)\$(coreFile).Silverlight.csproj</coreSilverlight>
+		<coreFile>Hazzik.Maybe</coreFile>
 
 		<testPath>$(MSBuildProjectDirectory)\src\Maybe.Tests</testPath>
-		<testFile>Maybe.Tests</testFile>
-		<test>$(testPath)\$(testFile).csproj</test>
-		<testSilverlight>$(testPath)\$(testFile).Silverlight.csproj</testSilverlight>
+		<testFile>Hazzik.Maybe.Tests</testFile>
 	</PropertyGroup>
 
-	<Target Name="Full" DependsOnTargets="Init; Clean; Build; Deploy; nuget"/>
+	<Target Name="Full" DependsOnTargets="Init; Clean; Build; testAll; Deploy; nuget"/>
 
 	<Target Name="Init">
 		<MakeDir Directories="$(artifactPath)" Condition="!Exists('$(artifactPath)')"/>
