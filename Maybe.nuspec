@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>OoMapper</id>
+    <version>0.0.0.0</version>
+    <title>Maybe</title>
+    <authors>hazzik</authors>
+    <owners />
+    <projectUrl>http://github.com/hazzik/Maybe</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Maybe is monads implementation for .NET</description>
+    <summary>Maybe is monads implementation for .NET</summary>
+    <language />
+    <tags>Maybe, Monads, .NET</tags>
+  </metadata>
+  <files>
+    <file src="Maybe.dll" target="lib\NET4\Maybe.dll" />
+    <file src="Maybe.pdb" target="lib\NET4\Maybe.pdb" />
+  </files>
+</package>
