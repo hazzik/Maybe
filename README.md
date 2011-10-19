@@ -1,0 +1,1 @@
+Maybe is a (maybe monad)[http://en.wikipedia.org/wiki/Monad_(functional_programming)#Maybe_monad] implementation for .NET
