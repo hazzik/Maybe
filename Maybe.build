@@ -35,7 +35,7 @@
 		<AssemblyInfo CodeLanguage="CS"
 					OutputFile="src\CommonAssemblyInfo.cs"
 					AssemblyProduct="Maybe"
-					AssemblyCopyright="Copyright © hazzik 2011"
+					AssemblyCopyright="Copyright © hazzik 2011 - 2014"
 					ComVisible="false"
 					CLSCompliant="true"
 					AssemblyVersion="$(Version)"
@@ -45,11 +45,11 @@
 	</Target>
 
 	<Target Name="testAll">
-		<Exec Command="$(xunit) $(testPath)\bin\$(Configuration)\$(testFile).dll" />
+		<Exec Command="&quot;$(xunit)&quot; &quot;$(testPath)\bin\$(Configuration)\$(testFile).dll&quot;" />
 	</Target>
 
 	<Target Name="nuget">
-		<Exec Command="$(nuget) pack $(nuspec) /basepath $(corePath)\bin\$(Configuration) /outputdirectory $(artifactPath) /version $(version)" />
+		<Exec Command="&quot;$(nuget)&quot; pack &quot;$(nuspec)&quot; /basepath &quot;$(corePath)\bin\$(Configuration)&quot; /outputdirectory &quot;$(artifactPath)&quot; /version &quot;$(version)&quot;" />
 	</Target>
 
 	<Target Name="Deploy">
