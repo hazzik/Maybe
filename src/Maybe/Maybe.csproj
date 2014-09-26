@@ -45,6 +45,7 @@
     </Compile>
     <Compile Include="Maybe.Nullable.cs" />
     <Compile Include="Maybe.Objects.cs" />
+    <Compile Include="Maybe`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

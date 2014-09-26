@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="MaybeNullableTests.cs" />
     <Compile Include="MaybeObjectsTests.cs" />
+    <Compile Include="MaybeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
