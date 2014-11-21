@@ -9,7 +9,7 @@
 	<PropertyGroup>
 		<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
 		<xunit>$(MSBuildProjectDirectory)\tools\xunit\xunit.console.clr4.exe</xunit>
-		<nuget>$(MSBuildProjectDirectory)\tools\nuget\nuget</nuget>
+		<nuget>$(MSBuildProjectDirectory)\.nuget\nuget</nuget>
 		<nuspec>$(MSBuildProjectDirectory)\Maybe.nuspec</nuspec>
 
 		<artifactPath>$(MSBuildProjectDirectory)\release</artifactPath>
