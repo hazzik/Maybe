@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Hazzik.Maybe
+﻿namespace Hazzik.Maybe
 {
+    using System;
+    using System.Collections.Generic;
+
     public struct Maybe<T> : IEquatable<Maybe<T>>
         // where T: class 
     {
