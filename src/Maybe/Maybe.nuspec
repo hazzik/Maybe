@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Maybe</id>
-    <version>0.0.0.0</version>
+    <version>$version$</version>
     <title>Maybe</title>
     <authors>hazzik</authors>
     <owners />
@@ -13,8 +13,4 @@
     <language />
     <tags>Maybe, Monads, .NET</tags>
   </metadata>
-  <files>
-    <file src="Hazzik.Maybe.dll" target="lib\NET4\Hazzik.Maybe.dll" />
-    <file src="Hazzik.Maybe.pdb" target="lib\NET4\Hazzik.Maybe.pdb" />
-  </files>
 </package>

@@ -9,8 +9,6 @@
 	<PropertyGroup>
 		<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
 		<xunit>$(MSBuildProjectDirectory)\tools\xunit\xunit.console.clr4.exe</xunit>
-		<nuget>$(MSBuildProjectDirectory)\.nuget\nuget</nuget>
-		<nuspec>$(MSBuildProjectDirectory)\Maybe.nuspec</nuspec>
 
 		<artifactPath>$(MSBuildProjectDirectory)\release</artifactPath>
 
@@ -21,7 +19,7 @@
 		<testFile>Hazzik.Maybe.Tests</testFile>
 	</PropertyGroup>
 
-	<Target Name="Full" DependsOnTargets="Init; Clean; Build; testAll; Deploy; nuget"/>
+	<Target Name="Full" DependsOnTargets="Init; Clean; Build; TestAll; Deploy"/>
 
 	<Target Name="Init">
 		<MakeDir Directories="$(artifactPath)" Condition="!Exists('$(artifactPath)')"/>
@@ -33,32 +31,24 @@
 
 	<Target Name="Build">
 		<AssemblyInfo CodeLanguage="CS"
-					OutputFile="src\CommonAssemblyInfo.cs"
-					AssemblyProduct="Maybe"
-					AssemblyCopyright="Copyright © hazzik 2011 - 2014"
-					ComVisible="false"
-					CLSCompliant="true"
-					AssemblyVersion="$(Version)"
-					AssemblyFileVersion="$(Version)"/>
+			OutputFile="src\CommonAssemblyInfo.cs"
+			AssemblyProduct="Maybe"
+			AssemblyCopyright="Copyright © hazzik 2011 - 2014"
+			CLSCompliant="true"
+			AssemblyVersion="$(Version)"
+			AssemblyFileVersion="$(Version)"/>
 
 		<MSBuild Projects="Maybe.sln" Targets="Build" Properties="Configuration=$(Configuration)"/>
 	</Target>
 
-	<Target Name="testAll">
+	<Target Name="TestAll">
 		<Exec Command="&quot;$(xunit)&quot; &quot;$(testPath)\bin\$(Configuration)\$(testFile).dll&quot;" />
-	</Target>
-
-	<Target Name="nuget">
-		<Exec Command="&quot;$(nuget)&quot; pack &quot;$(nuspec)&quot; /basepath &quot;$(corePath)\bin\$(Configuration)&quot; /outputdirectory &quot;$(artifactPath)&quot; /version &quot;$(version)&quot;" />
 	</Target>
 
 	<Target Name="Deploy">
 		<ItemGroup>
-			<ZipFiles Include="$(corePath)\bin\$(Configuration)\$(coreFile).*" />
+			<nupkg Include="$(corePath)\bin\$(Configuration)\*.nupkg" />
 		</ItemGroup>
-		<Zip Files="@(ZipFiles)"
-			WorkingDirectory="$(corePath)\bin\$(Configuration)\"
-			ZipFileName="$(artifactPath)\$(coreFile).$(version).zip"
-			ZipLevel="9"/>
+		<Copy SourceFiles="@(nupkg)" DestinationFolder="$(artifactPath)"/>
 	</Target>
 </Project>

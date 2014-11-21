@@ -5,7 +5,7 @@ set cfg=%1%
 
 if "%cfg%"=="" set cfg=Release
 
-FOR /F %%a IN ('git describe --abbrev^=0 --tag') DO set version=%%a.0
+FOR /F %%a IN ('git describe --abbrev^=0 --tag') DO set version=%%a
 
 if "%version%"=="" set version="0.0.0.1"
 
