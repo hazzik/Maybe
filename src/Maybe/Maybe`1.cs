@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using JetBrains.Annotations;
 
     public struct Maybe<T> : IEquatable<Maybe<T>>
-        // where T: class 
     {
         public static readonly Maybe<T> Nothing = new Maybe<T>();
 
@@ -27,7 +27,7 @@
             }
         }
 
-        public Maybe(T value)
+        public Maybe([CanBeNull] T value)
         {
             _hasValue = !ReferenceEquals(value, null);
             _value = value;
@@ -54,6 +54,13 @@
             return maybe.Value;
         }
 
+        public bool Equals(Maybe<T> other)
+        {
+            return other._hasValue
+                ? _hasValue && EqualityComparer<T>.Default.Equals(_value, other._value)
+                : _hasValue == false;
+        }
+
         public override bool Equals(object @object)
         {
             if (ReferenceEquals(null, @object)) return false;
@@ -64,15 +71,8 @@
         {
             unchecked
             {
-                return (HasValue.GetHashCode()*397) ^ EqualityComparer<T>.Default.GetHashCode(Value);
+                return (_hasValue.GetHashCode()*397) ^ EqualityComparer<T>.Default.GetHashCode(_value);
             }
-        }
-
-        public bool Equals(Maybe<T> other)
-        {
-            return other._hasValue
-                ? _hasValue && EqualityComparer<T>.Default.Equals(_value, other._value)
-                : _hasValue == false;
         }
 
         public static bool operator ==(Maybe<T> x, Maybe<T> y)
@@ -85,12 +85,23 @@
             return !x.Equals(y);
         }
 
-        public Maybe<TResult> Bind<TResult>(Func<T, TResult> func) 
+        public override string ToString()
+        {
+            return Bind(x => x.ToString().ToMaybe()).GetValueOrDefault("Nothing");
+        }
+
+        [Obsolete("Please use Select")]
+        public Maybe<TResult> Bind<TResult>([NotNull] Func<T, TResult> func) 
+        {
+            return Bind(x => func(x).ToMaybe());
+        }
+
+        public Maybe<TResult> Bind<TResult>([NotNull] Func<T, Maybe<TResult>> func) 
         {
             if (_hasValue)
                 return func(_value);
 
-            return new Maybe<TResult>();
+            return Maybe<TResult>.Nothing;
         }
     }
 }

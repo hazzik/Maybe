@@ -1,16 +1,17 @@
 ﻿namespace Hazzik.Maybe
 {
     using System;
+    using JetBrains.Annotations;
 
     public static partial class Maybe
     {
-        public static TResult With<T, TResult>(this T @self, Func<T, TResult> func)
+        [CanBeNull, ContractAnnotation("self:null=>null")]
+        public static TResult With<T, TResult>([CanBeNull] this T self, [NotNull] Func<T, TResult> func)
             where T : class
         {
-            if (func == null) throw new ArgumentNullException("func");
-            if (@self != null)
-                return func(self);
-            return default(TResult);
+            if (ReferenceEquals(func, null)) throw new ArgumentNullException("func");
+            if (ReferenceEquals(self, null)) return default(TResult);
+            return func(self);
         }
     }
 }

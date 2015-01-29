@@ -36,8 +36,6 @@
             Assert.Equal(100, result);
         }
 
-        #region Nested type: Target
-
         public class Target
         {
             public Target()
@@ -49,7 +47,5 @@
             public object ObjectProperty { get; set; }
             public int IntProperty { get; set; }
         }
-
-        #endregion
     }
 }
