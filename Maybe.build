@@ -33,9 +33,9 @@
 		<AssemblyInfo CodeLanguage="CS"
 			OutputFile="src\CommonAssemblyInfo.cs"
 			AssemblyProduct="Maybe"
-			AssemblyCopyright="Copyright © hazzik 2011 - 2014"
+			AssemblyCopyright="Copyright © Alexander Zaytsev 2011 - 2015"
 			CLSCompliant="true"
-			AssemblyVersion="$(Version)"
+			AssemblyVersion="1.1.0"
 			AssemblyFileVersion="$(Version)"/>
 
 		<MSBuild Projects="Maybe.sln" Targets="Build" Properties="Configuration=$(Configuration)"/>
