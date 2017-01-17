@@ -44,7 +44,13 @@
             return @default;
         }
 
-        public static implicit operator Maybe<T>(T value)
+		public T GetValueOrDefault(Func<T> func)
+		{
+			if (_hasValue) return _value;
+			return func();
+		}
+
+		public static implicit operator Maybe<T>(T value)
         {
             return new Maybe<T>(value);
         }
