@@ -122,6 +122,27 @@ namespace Hazzik.Maybe.Tests
 
             Assert.Equal("Nothing", maybe.ToString());
         }
+
+		[Fact]
+		public void WhereFilterMatches()
+		{
+			var maybe = from i in 5.ToMaybe() where i == 5 select i;
+			Assert.Equal(5, maybe.GetValueOrDefault());
+		}
+
+		[Fact]
+		public void WhereFilterDoesNotMatch()
+		{
+			var maybe = from i in 5.ToMaybe() where i == 6 select i;
+			Assert.Equal(0, maybe.GetValueOrDefault());
+		}
+
+		[Fact]
+		public void WhereFiltersOnNothing()
+		{
+			var maybe = from i in Maybe<int>.Nothing where i == 5 select i;
+			Assert.Equal(0, maybe.GetValueOrDefault());
+		}
     }
 
     public class Person
